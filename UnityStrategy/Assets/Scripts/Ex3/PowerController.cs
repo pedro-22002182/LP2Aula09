@@ -4,25 +4,27 @@ using UnityEngine;
 
 public class PowerController : MonoBehaviour
 {
-    [SerializeField]
-    private List<Superpower> powersList;
+    private IEnumerable<Superpower> powersList;
 
     // Start is called before the first frame update
     void Start()
     {
+        powersList = GetComponents<Superpower>();
         StartCoroutine(chamarPower());
     }
 
     private IEnumerator chamarPower()
     {
+
+        YieldInstruction wfs = new WaitForSeconds(5);
         while(true)
         {
-            yield return new WaitForSeconds(5);
-
             foreach(Superpower poder in powersList)
             {
                 poder.Activate();
             }
+
+            yield return wfs;
         }
     }
 }

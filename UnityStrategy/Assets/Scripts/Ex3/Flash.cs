@@ -5,7 +5,7 @@ using UnityEngine;
 public class Flash : Superpower
 {
     [SerializeField]
-    private float speed;
+    private float speed = 50;
 
     public override void Activate()
     {
